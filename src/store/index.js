@@ -3,7 +3,7 @@ import axios from "axios";
 
 const store = createStore({
   state:{
-     tasks :[]
+     tasks :[],
   },
   getters:{
       allTasks(state){
