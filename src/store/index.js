@@ -16,17 +16,25 @@ const store = createStore({
     }
   },
   actions:{
-    async fetchTasks({ commit }){
+    async fetchTasks({ commit }, limit){
       try{
-      const response = await axios.get('https://jsonplaceholder.typicode.com/todos')
-      commit('setTasks', response.data)
+        const response = await axios.get(`https://jsonplaceholder.typicode.com/todos?_limit=${limit}`)
+        commit('setTasks', response.data)
   }
   catch(error){
     console.log("error")
   }
- }
+ },
+//  async filterTasksAction({ commit }, limit){
+//   try{
+//   const response = await axios.get(`https://jsonplaceholder.typicode.com/todos?_limit = ${limit}`)
+//   commit('setTasks', response.data)
+// }
+// catch(error){
+// console.log("error")
+// }
+// }
     }
-
 
 })
 
