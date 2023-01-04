@@ -23,6 +23,10 @@ const store = createStore({
       if(index != -1){
         state.tasks.splice(index, 1,updatetask) // --- replace
       }
+    },
+    removeTask(state, id){
+        state.tasks = state.tasks.filter(task => task.id != id)
+
     }
 
   },
@@ -77,6 +81,37 @@ const store = createStore({
           })
 
           commit('updateTask', response.data); // -- call mutations
+          Swal.fire({
+            title: "Task updated",
+            icon: "success",
+            showConfirmButton: false,
+            timerProgressBar: true,
+            timer: 3000,
+            toast: true,
+            position: 'top',
+        });
+  
+        } catch (error) {
+          console.log("error");
+        }
+      },
+
+       //-----delete tasks action ----
+
+       async deleteTaskAction({ commit }, id) {
+        try {
+          await axios.delete(`https://jsonplaceholder.typicode.com/todos/${id}`)
+          commit('removeTask', id); // -- call mutations
+          Swal.fire({
+            title: "Task deleted",
+            icon: "success",
+            showConfirmButton: false,
+            timerProgressBar: true,
+            timer: 3000,
+            toast: true,
+            position: 'top',
+        });
+  
         } catch (error) {
           console.log("error");
         }

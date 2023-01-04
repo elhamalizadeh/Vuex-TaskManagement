@@ -7,7 +7,7 @@
     <h6 class="card-subtitle mb-2 text-muted">{{ task.id }}</h6>
     <p class="card-text"> {{ task.completed }}</p>
 <updateTask  :task="task" />
- 
+<deleteTask :id="task.id" />
 
   </div>
 </div>
@@ -16,11 +16,13 @@
 
 <script>
 import updateTask from '../components/tasks/update.vue';
+import deleteTask from '../components/tasks/delete.vue';
 
 export default {
 name:'todoPart', 
 components:{
-  updateTask
+  updateTask, 
+  deleteTask
 },
 props :{
     task : Object,
