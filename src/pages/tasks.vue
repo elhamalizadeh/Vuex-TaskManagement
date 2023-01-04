@@ -6,6 +6,7 @@
 </div>
   <div class="container" v-else>
     <h1>List of Tasks</h1>
+    <create />
     <FilterTasks />
     <div class="row">
       <div class="col-md-3 ms-5 mt-2" v-for="task in tasks" :key="task.id">
@@ -18,6 +19,7 @@
 <script>
 import todo from "../components/todo.vue";
 import FilterTasks from '../components/tasks/filter.vue';
+import create from '../components/tasks/create.vue';
 import { useStore } from 'vuex';
 import { computed , ref } from 'vue'
 
@@ -25,7 +27,8 @@ export default {
   name: "TasksPart",
   components: {
     todo,
-    FilterTasks
+    FilterTasks,
+    create
   },
   setup(){
 const loading = ref(false);
