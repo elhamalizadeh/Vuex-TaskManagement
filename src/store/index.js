@@ -17,8 +17,16 @@ const store = createStore({
     },
     createTask(state , task){
       state.tasks.unshift(task)
+    },
+    updateTask(state, updatetask){
+      const index = state.tasks.findIndex(task => task.id == updatetask.id);
+      if(index != -1){
+        state.tasks.splice(index, 1,updatetask) // --- replace
+      }
     }
+
   },
+
   actions: {
     //-----fetch tasks action ----
 
@@ -57,6 +65,22 @@ const store = createStore({
       }
 
     },
+
+      //-----update tasks action ----
+
+      async updateTaskAction({ commit }, task) {
+        try {
+            const response = await axios.put(`https://jsonplaceholder.typicode.com/todos/${task.id}`, {
+              id: task.id,
+              title: task.title,
+              completed: !task.completed
+          })
+
+          commit('updateTask', response.data); // -- call mutations
+        } catch (error) {
+          console.log("error");
+        }
+      },
   },
 });
 
