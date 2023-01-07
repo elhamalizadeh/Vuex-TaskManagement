@@ -13,6 +13,9 @@
         <li class="nav-item">
            <router-link class="nav-link" :to="{name:'TasksPart'}">Tasks</router-link>
         </li>
+         <li class="nav-item">
+           <router-link class="nav-link" :to="{name:'products'}">Products</router-link>
+        </li>
       </ul>
       <form class="d-flex" role="search">
         <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
