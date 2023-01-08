@@ -12,7 +12,7 @@
                 <p class="card-text"> {{ product.description }}</p>
             </div>
         <div class="card-footer d-flex justify-content-between align-items-center">
-            <button class="btn btn-outline-success btn-sm">Add to Cart</button>
+            <button @click="AddToCart(product)" class="btn btn-outline-success btn-sm">Add to Cart</button>
             <span >{{ product.price }}</span>
         </div>
         </div>
@@ -29,9 +29,14 @@ export default {
 name : "productIndex",
 setup(){
     const store = useStore();
-    const products = computed(() => store.getters['product/allProducts'])
-console.log(products)
-return { products }
+    const products = computed(() => store.getters["product/allProducts"]);
+
+    function AddToCart(product){
+        //console.log("product is:" + product)
+        store.dispatch('cart/addToCartAction' , product)
+    }
+    
+return { products,AddToCart }
 },
 }
 </script>
