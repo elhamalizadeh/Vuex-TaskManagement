@@ -32,7 +32,6 @@ setup(){
     const products = computed(() => store.getters["product/allProducts"]);
 
     function AddToCart(product){
-        //console.log("product is:" + product)
         store.dispatch('cart/addToCartAction' , product)
     }
     

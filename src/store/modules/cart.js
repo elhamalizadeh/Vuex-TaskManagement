@@ -8,7 +8,7 @@ const cart = {
     namespaced: true,
 
     state: {
-        cart: localStorage.getItem('cart') ? JSON.parse (localStorage.getItem('cart')) : []
+        cart: localStorage.getItem('cart') ? JSON.parse(localStorage.getItem('cart')) : []
     },
     getters:{
       count(state){
@@ -35,6 +35,24 @@ const cart = {
                 item.quantity++
             }
             UpdateLocalStorage(state.cart)
+        },
+
+        plus(state,id){
+            const item = state.cart.find(p => p.id = id);
+            if(item){
+                item.quantity++
+            }
+            UpdateLocalStorage(state.cart)
+        },
+
+        minus(state,id){
+            const item = state.cart.find(p => p.id = id);
+            if(item){
+                if(item.quantity>1){
+                    item.quantity--
+                }
+            }
+            UpdateLocalStorage(state.cart)
         }
     },
     actions: {
@@ -49,7 +67,15 @@ const cart = {
                 toast: true,
                 position: 'top',
             });
+        },
+
+        plusAction({ commit }, id){
+            commit('plus',id)
+        },
+        minusAction({ commit }, id){
+            commit('minus',id)
         }
+
     }
     }
 

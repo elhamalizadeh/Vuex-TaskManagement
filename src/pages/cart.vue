@@ -31,9 +31,9 @@
                     </td>
                 <td class="align-middle">{{ item.price }}</td>
                 <td class="align-middle">
-                     <button class="btn btn-sm btn-dark me-2">+</button>
+                     <button @click="increment(item.id)" class="btn btn-sm btn-dark me-2">+</button>
                    <span> {{ item.quantity }}</span>
-                    <button class="btn btn-sm btn-dark ms-2">-</button></td>
+                    <button @click="decrement(item.id)" class="btn btn-sm btn-dark ms-2">-</button></td>
                 <td class="align-middle">{{ item.quantity * item.price }}</td>
                  <td class="align-middle" style="width: 15%">
                 <button class="btn btn-danger btn-sm">delete</button>
@@ -69,7 +69,14 @@ setup(){
     const items = computed(()=> store.getters['cart/allItems']);
     const cartTotalAmount = computed(()=> store.getters['cart/TotalAmount'])
 
-return{ items, cartTotalAmount }
+function increment(id){
+    store.dispatch("cart/plusAction", id)
+}
+function decrement(id){
+    store.dispatch("cart/minusAction" , id)
+}
+
+return{ items, cartTotalAmount,increment,decrement }
 }
 }
 </script>
