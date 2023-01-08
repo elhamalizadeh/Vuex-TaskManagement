@@ -17,18 +17,37 @@
            <router-link class="nav-link" :to="{name:'products'}">Products</router-link>
         </li>
       </ul>
-      <form class="d-flex" role="search">
+     
+      <!-- <form class="d-flex" role="search">
         <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
         <button class="btn btn-outline-success" type="submit">Search</button>
-      </form>
+      </form> -->
+       <ul class="navbar-nav me-auto">
+          <li class="nav-item">
+            <router-link :to="{name:'cart'}" class="nav-link p-1 me-3">
+            <span class="badge rounded-pill bg-primary me-1">{{ countCartItems }}</span>
+            <i class="bi bi-basket-fill"></i>
+            </router-link>
+          </li>
+      </ul>
     </div>
   </div>
 </nav>
 </template>
 
 <script>
+  import { useStore } from "vuex"
+  import { computed } from "vue"
 export default {
-name:'HeaderPart'
+name:'HeaderPart',
+
+setup(){
+  const store = useStore();
+  const countCartItems = computed (()=> store.getters['cart/count'])
+
+
+return { countCartItems }
+}
 }
 </script>
 

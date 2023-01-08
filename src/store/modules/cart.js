@@ -10,6 +10,19 @@ const cart = {
     state: {
         cart: localStorage.getItem('cart') ? JSON.parse (localStorage.getItem('cart')) : []
     },
+    getters:{
+      count(state){
+        return state.cart.length
+      },
+      allItems(state){ 
+        return state.cart
+    },
+    TotalAmount(state){
+        return state.cart.reduce((total,p) => {
+        return total + p.price * p.quantity
+    },0)
+    }
+},
     mutations: {
         add(state, product) {
             const item = state.cart.find(p => p.id == product.id)
@@ -38,6 +51,6 @@ const cart = {
             });
         }
     }
-}
+    }
 
 export default cart;
