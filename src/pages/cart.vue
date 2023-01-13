@@ -1,7 +1,14 @@
 <template>
   <div class="container">
      <div class="row mt-5">
-      <div class="col-lg-12 pl-3 pt-3">
+      <div v-if="items.length == 0" class="text-center">
+      <div  style="font-size:70px">
+        <i class="bi bi-basket"></i>
+        </div>
+        <h3>Cart Is Empty</h3>
+        <router-link :to="{name:'products'}" class="btn btn-primary">Products</router-link>
+        </div>
+      <div v-else class="col-lg-12 pl-3 pt-3">
     <table class="table table-hover border bg-white">
         <thead>
             <tr>
@@ -24,7 +31,7 @@
                     />
                         </div>
                          <div class="col-lg-10">
-                            <h5>{{ item.name }}</h5>
+                            <h5>{{ item.id }}/{{ item.name }}</h5>
                             <p>{{ item.description }}</p>
                          </div>
                     </div>
@@ -36,14 +43,14 @@
                     <button @click="decrement(item.id)" class="btn btn-sm btn-dark ms-2">-</button></td>
                 <td class="align-middle">{{ item.quantity * item.price }}</td>
                  <td class="align-middle" style="width: 15%">
-                <button class="btn btn-danger btn-sm">delete</button>
+                <button @click="deleteFromCart(item.id)" class="btn btn-danger btn-sm">delete</button>
               </td>
             </tr>
         </tbody>
         <tfoot>
             <tr>
               <td>
-                <a href="#" class="btn btn-dark">Clear Cart</a>
+                <button @click="clearAll" href="#" class="btn btn-dark">Clear Cart</button>
               </td>
               <td colspan="2" class="hidden-xs"></td>
               <td class="hidden-xs text-center" style="width: 15%">
@@ -75,8 +82,14 @@ function increment(id){
 function decrement(id){
     store.dispatch("cart/minusAction" , id)
 }
+function deleteFromCart(id){
+  store.dispatch("cart/deleteAction", id)
+}
+function clearAll(){
+  store.dispatch('cart/clearAction')
+}
 
-return{ items, cartTotalAmount,increment,decrement }
+return{ items, cartTotalAmount,increment,decrement ,deleteFromCart,clearAll}
 }
 }
 </script>
