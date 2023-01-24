@@ -33,11 +33,12 @@ export default {
   setup(){
 const loading = ref(false);
 const store = useStore();
-const tasks = computed(()=> store.getters.allTasks);
+const tasks = computed(()=> store.getters["task/allTasks"]);
 
 async function fetchTasks(){
   loading.value= true;
-  await store.dispatch("fetchTasks");
+  await store.dispatch('task/fetchTasks');
+
   loading.value= false;
 }
 

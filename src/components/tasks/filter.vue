@@ -26,7 +26,7 @@ export default{
 
 function FilterTasks(){
     console.log("selected is: " + number.value);
-        store.dispatch("fetchTasks" , number.value);
+        store.dispatch("task/fetchTasks" , number.value);
         
     }
     return { FilterTasks , number }

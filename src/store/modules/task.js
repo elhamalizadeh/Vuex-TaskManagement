@@ -2,6 +2,7 @@ import axios from "axios";
 import Swal from 'sweetalert2'
 
  const task = {
+  namespaced: true,
     state: {
         tasks: [],
       },

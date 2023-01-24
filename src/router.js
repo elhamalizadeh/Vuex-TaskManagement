@@ -5,13 +5,15 @@ import create from './components/tasks/create.vue';
 import productIndex from './pages/products.vue';
 import cartIndex from './pages/cart.vue';
 import users from './pages/users.vue';
+import posts from './pages/posts.vue';
 
 const routes = [{ path: "/", name: "HomePage", component: Home },
 { path: "/tasks", name: "TasksPart", component: Tasks},
 { path: "/tasks/create", name: "CreateTask", component: create},
 { path: "/products", name: "products", component: productIndex},
 { path: "/cart", name: "cart", component: cartIndex},
-{ path: "/users", name: "users", component: users}];
+{ path: "/users", name: "users", component: users},
+{ path: "/posts", name: "posts", component: posts}];
 
 const router = createRouter({
   history: createWebHistory(),

@@ -20,7 +20,7 @@ export default {
 
       async function updateTask(task){
         loading.value=true;
-        await store.dispatch("updateTaskAction" , task),
+        await store.dispatch("task/updateTaskAction" , task),
         loading.value = false;
       }
        return { updateTask,loading }

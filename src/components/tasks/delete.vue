@@ -19,7 +19,7 @@ export default {
 
     async function deleteTask() {
       loading.value = true;
-      await store.dispatch("deleteTaskAction", props.id);
+      await store.dispatch("task/deleteTaskAction", props.id);
       loading.value = false;
     }
     return { loading, deleteTask };

@@ -40,7 +40,7 @@ export default {
       } else {
         titleTextAlert.value = "";
         loading.value = true;
-        await store.dispatch("createTask", title.value);
+        await store.dispatch("task/createTask", title.value);
         loading.value = false;
       }
     }
