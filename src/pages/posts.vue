@@ -5,62 +5,6 @@
   </div>
 </template>
 <script>
-import { useStore } from "vuex";
-import { computed } from "vue";
-export default{
-  name:'postPage',
-
-  setup(){
-    const postStore = useStore();
-    const posts = computed(()=> postStore.getters["posts/getAllposts"]);
-
-   async function FetchPosts(){
-      await postStore.dispatch("posts/FetchPosts");
-    }
-
-    FetchPosts()
-    return{  posts }
-  }
-}
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-/*
 import { useStore } from 'vuex';
 import { computed } from 'vue';
 
@@ -88,7 +32,6 @@ return { posts }
 
 };
 
-*/
 </script>
 
 <style>
