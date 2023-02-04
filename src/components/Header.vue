@@ -22,6 +22,9 @@
          <li class="nav-item">
            <router-link class="nav-link" :to="{name:'posts'}">posts</router-link>
         </li>
+        <li class="nav-item">
+           <router-link class="nav-link" :to="{name:'comments'}">comments</router-link>
+        </li>
       </ul>
      
       <!-- <form class="d-flex" role="search">

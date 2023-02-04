@@ -4,6 +4,7 @@ import product from './modules/product.js';
 import cart from './modules/cart.js';
 import user from './modules/users.js';
 import posts from './modules/posts.js';
+import comments from './modules/comments.js';
 
 
 const store = createStore({
@@ -12,7 +13,8 @@ modules:{
   product,
   cart, 
   user,
-  posts
+  posts,
+  comments
 }
 });
 export default store;
