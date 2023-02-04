@@ -8,6 +8,7 @@ import users from './pages/users.vue';
 import posts from './pages/posts.vue';
 import showPost from './components/posts/showPost.vue';
 import update from './components/posts/update.vue';
+import updateComment from './components/comments/update.vue';
 import comments from './pages/Comments.vue';
 
 const routes = [{ path: "/", name: "HomePage", component: Home },
@@ -19,7 +20,8 @@ const routes = [{ path: "/", name: "HomePage", component: Home },
 { path: "/posts", name: "posts", component: posts},
 { path: "/posts/:id", name: "showPost", component: showPost},
 { path: "/editpost/:id", name: "update", component: update},
-{ path: "/comments", name: "comments", component: comments}];
+{ path: "/comments", name: "comments", component: comments},
+{ path: "/editComment/:id", name: "updateComment", component: updateComment}];
 
 const router = createRouter({
   history: createWebHistory(),

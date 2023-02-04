@@ -1,7 +1,9 @@
 <template>
   <div class="container">
         <div class="card-body">
-          <div class="card-title">{{ comment.id }}</div>
+          <div class="card-title">
+            <h5>{{ comment.id }} - {{ comment.name }} : </h5>
+            </div>
           <div class="card-text">{{ comment.body }}</div>
         </div>
   </div>
