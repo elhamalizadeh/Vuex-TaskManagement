@@ -8,7 +8,7 @@
 
 <script>
 import { useStore } from "vuex";
-import {ref} from "vue";
+import { ref } from "vue";
 
 export default {
     name:"updateTask",
