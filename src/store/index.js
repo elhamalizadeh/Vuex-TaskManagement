@@ -5,6 +5,7 @@ import cart from './modules/cart.js';
 import user from './modules/users.js';
 import posts from './modules/posts.js';
 import comments from './modules/comments.js';
+import album from './modules/album.js';
 
 
 const store = createStore({
@@ -14,7 +15,8 @@ modules:{
   cart, 
   user,
   posts,
-  comments
+  comments,
+  album
 }
 });
 export default store;
