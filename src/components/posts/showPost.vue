@@ -20,7 +20,6 @@ import { useRoute } from "vue-router";
 
 export default {
 name:'showPost',
-
 setup(){
     const route = useRoute();
          const Store = useStore();

@@ -8,7 +8,6 @@ state:{
     posts:[]
 },
 
-
 getters:{
     Allposts(state){
         return state.posts
