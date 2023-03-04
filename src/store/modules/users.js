@@ -8,8 +8,10 @@ namespaced : true,
     getters:{
         getAllUsers(state){
             return state.users;
+        },
+        SingleUser(state){
+            return state.user;
         }
-
     },
     mutations:{
         setUsers(state , users){
@@ -17,6 +19,9 @@ namespaced : true,
         },
         createNewUser(state , name){
             state.users.unshift(name);
+        },
+        setSingleUser(state, user){
+            state.user = user;
         }
 
     },
@@ -40,6 +45,15 @@ namespaced : true,
         }catch(error){
             console.log("error")
         }
+        },
+
+        async fetchSingleUser({ commit } , id ){ 
+            try{
+                const response = await axios.get(`https://jsonplaceholder.typicode.com/users/${id}`);
+                commit("setSingleUser" , response.data)
+            }catch(error){
+                console.log("fetchSingleUser has error")
+            }
         }
     }
 }

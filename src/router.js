@@ -12,6 +12,7 @@ import updateComment from './components/comments/update.vue';
 import comments from './pages/Comments.vue';
 import albums from './pages/albums.vue';
 import albumContent from './components/albums/AlbumContent.vue';
+import UpdateAlbum from './components/albums/updateAlbum';
 
 const routes = [{ path: "/", name: "HomePage", component: Home },
 { path: "/tasks", name: "TasksPart", component: Tasks},
@@ -25,7 +26,8 @@ const routes = [{ path: "/", name: "HomePage", component: Home },
 { path: "/comments", name: "comments", component: comments},
 { path: "/editComment/:id", name: "updateComment", component: updateComment},
 { path: "/albums", name: "albums", component: albums},
-{ path: "/albums/:id/:title", name: "albumContent", component: albumContent}];
+{ path: "/albums/:userId/:id/:title", name: "albumContent", component: albumContent},
+{ path: "/albums/update/:id", name: "UpdateAlbum", component: UpdateAlbum}];
 
 const router = createRouter({
   history: createWebHistory(),
