@@ -25,20 +25,19 @@ const rout =  useRoute();
 const parametr = rout.params;
 
 const albumStore = useStore();
+const userStore = useStore();
 const album = computed(()=> albumStore.getters["album/SingleAlbum"]);
-const user = computed(()=> albumStore.getters["users/SingleUser"]);
+const user = computed(()=> userStore.getters["users/SingleUser"]);
 
 async function fetchSingle(){
   await albumStore.dispatch("album/fetchSingleAlbum" , rout.params.id);
 }
 async function fetchUser(){
-  await albumStore.dispatch("users/fetchSingleUser" , rout.params.userId)
+  await userStore.dispatch("users/fetchSingleUser" , rout.params.userId)
 }
 
   fetchUser();
   fetchSingle();
-
-
 return { parametr , album , user }
 }
 }

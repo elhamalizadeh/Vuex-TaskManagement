@@ -1,4 +1,5 @@
 import axios from "axios";
+import Swal from 'sweetalert2'
 const albums = {
     namespaced: true,
     state:{
@@ -20,6 +21,9 @@ const albums = {
         },
         setSingleAlbum(state , album){
             state.album = album
+        },
+        updateAlbum(state,album){
+         state.album = album
         }
     },
     actions:{
@@ -39,6 +43,26 @@ const albums = {
                 commit("setSingleAlbum", response.data)
             }catch(error){
                 console.log ("singleAlbum has ERROR")
+            }
+        },
+
+        async updateSingleAlbum({commit} , album){
+            try{
+                const response = await axios.put(`https://jsonplaceholder.typicode.com/albums/${album.id}`,{
+                    userId : album.userId,
+                    title : album.title
+                }
+                );
+                commit("updateAlbum" , response.data);
+                Swal.fire({
+                    title: "Thanks!",
+                    text: "Album updated successfully",
+                    icon: "success",
+                    confirmButtonText: "Ok",
+                  });
+
+            }catch(error){
+                console.log("updateSingleAlbum error")
             }
         }
         
